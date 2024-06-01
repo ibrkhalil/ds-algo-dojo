@@ -1,30 +1,29 @@
-// Comapre the triplets
+// Electronics shop
 
 #include <iostream>;
 using namespace std;
 
 int main() {
-    int x,y,z; // Alice
-    int i,j,k; // Bob
-    cin >> x >> y >> z >> i >> j >> k;
-    int aliceScore = 0, bobScore = 0;
-    if (x > i) {
-        ++aliceScore;
-    } else if (i > x) {
-        ++bobScore;
+    int b, n, m;
+    cin >> b >> n >> m;
+    int keyboards[n];
+    int USBModels[m];
+    for (int i = 0; i < n; ++i) {
+        cin >> keyboards[i];
     }
-    if (y > j) {
-        ++aliceScore;
-    } else if (j > y) {
-        ++bobScore;
+    for (int i = 0; i < m; ++i) {
+        cin >> USBModels[i];
     }
-    if (z > k) {
-        ++aliceScore;
-    } else if (k > z) {
-        ++bobScore;
+    int maxVal = -1;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            int currentMatch = keyboards[i] + USBModels[j];
+            if ((currentMatch > maxVal) && max(currentMatch, maxVal) <= b) {
+                maxVal = keyboards[i] + USBModels[j];
+            }
+        }
     }
-    int resArr[2];
-    resArr[0] = aliceScore;
-    resArr[1] = bobScore;
-    cout << resArr[0] << " " << resArr[1];
+    cout << maxVal;
+
+    
 }
