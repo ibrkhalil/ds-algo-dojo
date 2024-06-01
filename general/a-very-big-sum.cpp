@@ -1,4 +1,4 @@
-// Hurdle Race
+// A very big sum
 
 #include <iostream>;
 using namespace std;
