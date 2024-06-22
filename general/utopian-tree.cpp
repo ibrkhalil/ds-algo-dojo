@@ -1,6 +1,6 @@
 // Utopian tree
 
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
 int main() {

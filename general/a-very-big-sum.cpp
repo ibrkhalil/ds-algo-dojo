@@ -1,6 +1,6 @@
 // A very big sum
 
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
 int main() {
