@@ -18,7 +18,7 @@ int main () {
         if(s[0] == '1' && s[1] == '2')
         leftStr = "12";
         else if(lessThanOne)
-        leftStr =  to_string(s[1] - '0' + 12);
+        leftStr = to_string(s[1] - '0' + 12);
         else {
         int num1 =  (s[0] - '0');
         int num2 =  (s[1] - '0');
