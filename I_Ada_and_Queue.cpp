@@ -9,7 +9,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    deque<int> dq;
+    deque<int> DequeInst;
     bool reversed = false;
 
     int operationsCount = 0;
@@ -24,26 +24,26 @@ int main()
             cin >> x;
             if (!reversed)
             {
-                dq.push_front(x);
+                DequeInst.push_front(x);
             }
             else
             {
-                dq.push_back(x);
+                DequeInst.push_back(x);
             }
         }
         else if (operation == "front")
         {
-            if (!dq.empty())
+            if (!DequeInst.empty())
             {
                 if (!reversed)
                 {
-                    cout << dq.front() << endl;
-                    dq.pop_front();
+                    cout << DequeInst.front() << endl;
+                    DequeInst.pop_front();
                 }
                 else
                 {
-                    cout << dq.back() << endl;
-                    dq.pop_back();
+                    cout << DequeInst.back() << endl;
+                    DequeInst.pop_back();
                 }
             }
             else
@@ -54,17 +54,17 @@ int main()
         else if (operation == "back")
         {
             {
-                if (!dq.empty())
+                if (!DequeInst.empty())
                 {
                     if (!reversed)
                     {
-                        cout << dq.back() << endl;
-                        dq.pop_back();
+                        cout << DequeInst.back() << endl;
+                        DequeInst.pop_back();
                     }
                     else
                     {
-                        cout << dq.front() << endl;
-                        dq.pop_front();
+                        cout << DequeInst.front() << endl;
+                        DequeInst.pop_front();
                     }
                 }
                 else
@@ -79,11 +79,11 @@ int main()
             cin >> x;
             if (!reversed)
             {
-                dq.push_back(x);
+                DequeInst.push_back(x);
             }
             else
             {
-                dq.push_front(x);
+                DequeInst.push_front(x);
             }
         }
         else if (operation == "reverse")
