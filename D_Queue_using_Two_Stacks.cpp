@@ -2,7 +2,6 @@
 #include <map>
 #include <iostream>
 #include <vector>
-#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -13,45 +12,52 @@ const int print = 3;
 int main()
 {
     int n;
-    stack<int> s1;
-    int x;
     cin >> n;
+    stack<int> s1, s2;
     while (n--)
     {
-        stack<int> tempStack;
         int op;
         cin >> op;
-        if (op == enqueue)
+        switch (op)
         {
+        case 1:
+            int x;
             cin >> x;
             s1.push(x);
-        }
-        else if (op == dequeue)
-        {
-            while(s1.size() > 1) {
-                tempStack.push(s1.top());
-                s1.pop();
-            }
-            s1.pop();
-            do
+            break;
+        case 2:
+            if (s2.empty())
             {
-                /* code */
-            } while(!tempStack.empty()) {
-                s1.push(tempStack.top());
-                tempStack.pop();
+                while (!s1.empty())
+                {
+                    s2.push(s1.top());
+                    s1.pop();
+                }
+                s2.pop();
             }
-            
-        }
-        else if (op == print)
-        {
-            tempStack = s1;
-            int latestVal;
-            while (!tempStack.empty())
+            else
             {
-                latestVal = tempStack.top();
-                tempStack.pop();
+                s2.pop();
             }
-            cout << latestVal << endl;
+            break;
+        case 3:
+            s2.top();
+            if (s2.empty())
+            {
+                while (!s1.empty())
+                {
+                    s2.push(s1.top());
+                    s1.pop();
+                }
+                cout << s2.top() << endl;
+            }
+            else
+            {
+                cout << s2.top() << endl;
+            }
+
+        default:
+            break;
         }
     }
 }
