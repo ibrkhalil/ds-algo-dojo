@@ -92,6 +92,7 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "__split_buffer": "cpp"
     }
 }
