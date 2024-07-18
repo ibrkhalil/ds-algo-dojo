@@ -1,7 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <string>
-#include <bits/stdc++.h>
+#include <set>
 
 using namespace std;
 
@@ -10,22 +10,19 @@ int main()
     set<string> setty;
     string result;
     string s;
-    while (std::getline(std::cin, s))
+    string word;
+    while (getline(cin, s))
         result += s + " ";
-        vector<string> newResult;
-        string word;
     for(int i = 0; i < result.size(); ++i) {
-        if(result[i] == '.' || result[i] == ':' || result[i] == '"') {
-            continue;
-        }
-        char lowerCasedChar = tolower(result[i]);
-        if(isalpha(lowerCasedChar)) {
-            word += lowerCasedChar;
-        } else if(lowerCasedChar == ' ') {
+        if(isalpha(result[i])) result[i] = tolower(result[i]); else result[i]=' ';
+        if(isalpha(result[i])) {
+            word+=result[i];
+        } else {
             if(word != "")
             setty.insert(word);
             word = "";
         }
+
     }
     auto startIt = setty.begin();
     while(startIt != setty.end()) {
