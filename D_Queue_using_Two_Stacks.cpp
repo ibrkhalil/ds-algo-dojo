@@ -13,12 +13,11 @@ const int print = 3;
 int main()
 {
     int n;
-    stack<int> s1;
+    stack<int> s1, tempStack;
     int x;
     cin >> n;
     while (n--)
     {
-        stack<int> tempStack;
         int op;
         cin >> op;
         if (op == enqueue)
@@ -28,19 +27,12 @@ int main()
         }
         else if (op == dequeue)
         {
-            while(s1.size() > 1) {
+            stack<int> stacWithFirstItemRemoved;
+            while(s1.size() >= 1) {
                 tempStack.push(s1.top());
                 s1.pop();
             }
-            s1.pop();
-            do
-            {
-                /* code */
-            } while(!tempStack.empty()) {
-                s1.push(tempStack.top());
-                tempStack.pop();
-            }
-            
+            s1 = tempStack;
         }
         else if (op == print)
         {
