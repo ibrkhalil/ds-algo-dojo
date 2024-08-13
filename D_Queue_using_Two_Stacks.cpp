@@ -2,7 +2,6 @@
 #include <map>
 #include <iostream>
 #include <vector>
-#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -16,12 +15,15 @@ int main()
     stack<int> s1, tempStack;
     int x;
     cin >> n;
+    stack<int> s1, s2;
     while (n--)
     {
         int op;
         cin >> op;
-        if (op == enqueue)
+        switch (op)
         {
+        case 1:
+            int x;
             cin >> x;
             s1.push(x);
         }
@@ -40,10 +42,27 @@ int main()
             int latestVal;
             while (!tempStack.empty())
             {
-                latestVal = tempStack.top();
-                tempStack.pop();
+                s2.pop();
             }
-            cout << latestVal << endl;
+            break;
+        case 3:
+            s2.top();
+            if (s2.empty())
+            {
+                while (!s1.empty())
+                {
+                    s2.push(s1.top());
+                    s1.pop();
+                }
+                cout << s2.top() << endl;
+            }
+            else
+            {
+                cout << s2.top() << endl;
+            }
+
+        default:
+            break;
         }
     }
 }

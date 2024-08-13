@@ -1,22 +1,18 @@
 #include <stack>
-#include <map>
 #include <iostream>
 
 using namespace std;
 
 char getMirrorBracket(char bracket)
 {
-    if (bracket == '}')
-    {
-        return '{';
+    if (bracket == '{') {
+        return '}';
     }
-    if (bracket == ']')
-    {
-        return '[';
+    if (bracket == '[') {
+        return ']';
     }
-    if (bracket == ')')
-    {
-        return '(';
+    if (bracket == '(') {
+        return ')';
     }
     return '0';
 }
@@ -27,46 +23,22 @@ int main()
     cin >> iterations;
     while (iterations--)
     {
-        bool balanced = true;
-        stack<char> st;
         string s;
         cin >> s;
-        for (int i = 0; i < s.size(); i++)
+        bool balanced = true;
+        for (uint i = 0; i < s.size() / 2; i++)
         {
-            if (s[i] == '[' || s[i] == '{' || s[i] == '(')
+            int targetIdx = s.size() - i - 1;
+            if (s[targetIdx] != getMirrorBracket(s[i]))
             {
-                st.push(s[i]);
-            }
-            else
-            {
-                if (!st.empty())
-                {
-                    if (st.top() == getMirrorBracket(s[i]))
-                    {
-
-                        st.pop();
-                        continue;
-                    }
-                    else
-                    {
-                        balanced = false;
-                        break;
-                    }
-                }
-                else
-                {
-                    balanced = false;
-                    break;
-                }
+                balanced = false;
             }
         }
-        if (balanced && st.empty())
+        if (balanced)
         {
-            cout << "YES\n";
+            cout << "YES" << endl;
+            continue;
         }
-        else
-        {
-            cout << "NO\n";
-        }
+        cout << "NO" << endl;
     }
 }

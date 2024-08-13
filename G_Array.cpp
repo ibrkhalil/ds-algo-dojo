@@ -1,45 +1,80 @@
 
-#include <bits/stdc++.h>
+#include <stack>
+#include <map>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-int main() {
-    int n;
-    vector<int> zeros, negatives, positives;
-    cin >> n;
-    int arr[n];
-    bool addedNeg = false;
-    int negativesSeen = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if(arr[i] < 0) {
-            negativesSeen++;
-        }
-        else if ((arr[i] > 0)) {
-            positives.push_back(arr[i]);
-        } else {
-            zeros.push_back(arr[i]);
-    }
-    }
-
-
+void printResult(vector<int> zeros, vector<int> positives, vector<int> negatives)
+{
     cout << negatives.size() << " ";
-    for(int i = 0; i < negatives.size(); i++)
-        cout << negatives[i] << ' ';
-        cout << endl;
+    for (int i = 0; i < negatives.size(); i++)
+    {
+        cout << negatives[i] << " ";
+    }
+    cout << endl;
+    cout << positives.size() << " ";
+    for (int i = 0; i < positives.size(); i++)
+    {
+        cout << positives[i] << " ";
+    }
+    cout << endl;
+    cout << zeros.size() << " ";
+    for (int i = 0; i < zeros.size(); i++)
+    {
+        cout << zeros[i] << " ";
+    }
+    cout << endl;
+}
 
+int main()
+{
+    vector<int> positives;
+    vector<int> negatives;
+    vector<int> zeros;
+    int negativesCount = 0;
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        int x;
+        cin >> x;
+        if (x == 0)
+        {
+            zeros.push_back(x);
+        }
+        else if (x < 0)
+        {
+            negatives.push_back(x);
+        }
+        else if (x > 0)
+        {
+            positives.push_back(x);
+        }
+    }
+    if (negatives.size() % 2 != 0)
+    {
+        while (negatives.size() > 1)
+        {
+            positives.push_back(negatives.back());
+            negatives.pop_back();
+        }
+    }
+    else
+    {
+        zeros.push_back(negatives.back());
+        negatives.pop_back();
+    }
 
-        cout << positives.size() << " ";
-    for(int i = 0; i < positives.size(); i++)
-        cout << positives[i] << ' ';
-        cout << endl;
+    // Positives might be empty so adding a pair of negative elements to it will it non-empty to match the problem's constraints.
 
-        cout << zeros.size() << " ";
-    for(int i = 0; i < zeros.size(); i++)
-        cout << zeros[i] << ' ';
-        cout << endl;
+    if(positives.empty()) {
+        positives.push_back(negatives.back());
+        negatives.pop_back();
+        positives.push_back(negatives.back());
+        negatives.pop_back();
+    }
+
+    printResult(zeros, positives, negatives);
 }
